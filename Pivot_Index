@@ -1,0 +1,24 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int[] nums = new int[n];
+        for(int i=0;i<n;i++){
+            nums[i] = i+1;
+        }
+        if(n==1){
+            return 1;
+        }else{
+            int leftSum=0,totalSum =0;
+            for(int i=0;i<n;i++){
+                totalSum += nums[i];
+            }
+            for(int i=0;i<n;i++){
+                totalSum -= nums[i];
+                if(totalSum == leftSum){
+                    return i+1;
+                }
+                leftSum += nums[i];
+            }
+            return -1;
+        }
+    }
+}
